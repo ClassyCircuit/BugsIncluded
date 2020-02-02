@@ -14,7 +14,7 @@
 *.userprefs
 
 # Databases
-*.db
+#*.db
 
 # Build results
 [Dd]ebug/

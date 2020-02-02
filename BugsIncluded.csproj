@@ -5,10 +5,6 @@
     <UserSecretsId>aspnet-BugsIncluded-8B40CB89-C88A-403F-A0E8-88A457E7BFB8</UserSecretsId>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="BugsIncluded.db" />
-  </ItemGroup>
-
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.1" />
