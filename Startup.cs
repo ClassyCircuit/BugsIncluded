@@ -28,11 +28,15 @@ namespace BugsIncluded
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // identity
             services.AddDbContext<AppIdentityDbContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<AppIdentityDbContext>();
+            // app data access
+            services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            
             services.AddControllersWithViews();
             services.AddRazorPages();
         }

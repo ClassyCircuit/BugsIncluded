@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using BugsIncluded.Models;
+using BugsIncluded.ViewModels;
 
 namespace BugsIncluded.Controllers
 {
@@ -20,6 +21,11 @@ namespace BugsIncluded.Controllers
 
         public IActionResult Index()
         {
+            var cardViewModel = new CardViewModel()
+            {
+                Title = "Configuring Raspberry Pi DNS Server",
+                LastUpdated = DateTime.Today
+            };
             return View();
         }
 
