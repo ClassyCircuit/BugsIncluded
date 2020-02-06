@@ -15,5 +15,7 @@ jobs:
         dotnet-version: 3.1.101
     - name: Build with dotnet
       run: dotnet build --configuration Release
-    - name: Unit Tests
-      run: dotnet test BugsIncluded.Tests/BugsIncluded.Tests.csproj
+    - name: Run Unit Tests
+      run: dotnet test BugsIncluded.Tests/BugsIncluded.Tests.csproj /p:CollectCoverage=true
+    - name: Publish Build Artifacts
+      run: dotnet publish -c Release -r linux-arm 
