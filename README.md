@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/janissimsons/BugsIncluded.svg?branch=master)](https://travis-ci.com/janissimsons/BugsIncluded)
+![.NET Core](https://github.com/janissimsons/BugsIncluded/workflows/.NET%20Core/badge.svg)
 
 # BugsIncluded
 Code for BugsIncluded.dev website using ASP.NET Core 3 framework
