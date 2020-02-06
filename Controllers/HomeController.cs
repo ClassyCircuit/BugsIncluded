@@ -41,7 +41,7 @@ namespace BugsIncluded.Controllers
             return View(cardHolderViewModel);
         }
 
-        public IActionResult Privacy()
+        public IActionResult About()
         {
             return View();
         }
