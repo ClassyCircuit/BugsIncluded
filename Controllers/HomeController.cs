@@ -21,12 +21,24 @@ namespace BugsIncluded.Controllers
 
         public IActionResult Index()
         {
-            var cardViewModel = new CardViewModel()
+            CardHolderViewModel cardHolderViewModel = new CardHolderViewModel()
             {
-                Title = "Configuring Raspberry Pi DNS Server",
-                LastUpdated = DateTime.Today
+                CardViewModels = new List<CardViewModel>()
+                {
+                    new CardViewModel()
+                    {
+                        Title = "Configuring Raspberry Pi DNS Server",
+                        LastUpdated = DateTime.Today
+                    },
+                    new CardViewModel()
+                    {
+                        Title = "Running Teradata Express on Azure",
+                        LastUpdated = DateTime.Today.AddDays(-5)
+                    }
+                }
             };
-            return View();
+
+            return View(cardHolderViewModel);
         }
 
         public IActionResult Privacy()

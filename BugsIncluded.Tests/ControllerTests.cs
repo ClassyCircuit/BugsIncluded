@@ -1,7 +1,9 @@
 using BugsIncluded.Controllers;
-using System;
 using Xunit;
-using FluentAssertions.Extensions;
+using Microsoft.AspNetCore.Mvc;
+using BugsIncluded.ViewModels;
+using Moq;
+using Microsoft.Extensions.Logging;
 
 namespace BugsIncluded.Tests
 {
@@ -9,10 +11,11 @@ namespace BugsIncluded.Tests
     {
         private readonly HomeController homeController;
 
-        public ControllerTests(HomeController homeController)
+        public ControllerTests()
         {
             // arrange
-            this.homeController = homeController;
+            var mock = new Mock<ILogger<HomeController>>();
+            homeController = new HomeController(mock.Object);
         }
         [Fact]
         public async void IndexReturnsCardViewModel()
@@ -22,8 +25,8 @@ namespace BugsIncluded.Tests
 
             // assert
             var viewModel = Assert.IsType<ViewResult>(result);
-            var model = Assert.IsType<CardViewModel>(viewModel.ViewData.Model);
-
+            var model = Assert.IsType<CardHolderViewModel>(viewModel.Model);
+            
         }
     }
 }

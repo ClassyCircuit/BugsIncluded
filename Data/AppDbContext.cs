@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BugsIncluded.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace BugsIncluded.Data
         {
         }
 
+        public DbSet<Post> Posts { get; set; }
 
     }
 }
