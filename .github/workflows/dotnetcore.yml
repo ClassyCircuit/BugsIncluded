@@ -5,22 +5,32 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-#     - uses: actions/checkout@v2
-#     - name: Setup .NET Core
-#       uses: actions/setup-dotnet@v1
-#       with:
-#         dotnet-version: 3.1.101
-#     - name: Build with dotnet
-#       run: dotnet build --configuration Release
-#     - name: Run Unit Tests
-#       run: dotnet test BugsIncluded.Tests/BugsIncluded.Tests.csproj /p:CollectCoverage=true
-#     - name: Dotnet Publish Build Artifacts
-#       run: dotnet publish -c Release -r linux-arm -o webapp
-#     - name: Upload Build Artifacts
-#       uses: actions/upload-artifact@v1
-#       with:
-#         name: webapp
-#         path:  webapp 
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+    - name: Build with dotnet
+      run: dotnet build --configuration Release
+    - name: Run Unit Tests
+      run: dotnet test BugsIncluded.Tests/BugsIncluded.Tests.csproj /p:CollectCoverage=true
+    - name: Dotnet Publish Build Artifacts
+      run:  dotnet publish -c Release -r linux-arm -o webapp --self-contained false
+    - name: Upload Build Artifacts
+      uses: actions/upload-artifact@v1
+      with:
+        name: buildartifact
+        path:  webapp
+    - name: Secure Copy of Build Artifacts
+      uses: appleboy/scp-action@master
+      env:
+        HOST: ${{ secrets.SERVER_HOST }}
+        USERNAME: ${{ secrets.SERVER_USER }}
+        PORT: ${{ secrets.SERVER_PORT }}
+        KEY: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
+      with:
+        source: "buildartifact/webapp"
+        target: "/usr/dotnetapps/"
     - name: SSH into server
       uses: appleboy/ssh-action@master
       with:
@@ -28,4 +38,10 @@ jobs:
         username: ${{ secrets.SERVER_USER }}
         key: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
         port: ${{ secrets.SERVER_PORT }}
-        script: whoami
+        script: |
+          sudo systemctl stop bugsincluded.service
+          sudo tar -czvf /usr/dotnetapps/backup.tar.gz -C /usr/dotnetapps/bugsincluded/ .
+          sudo rm -r /usr/dotnetapps/bugsincluded/!(*.db*)
+          sudo tar -xf /usr/dotnetapps/webapp.zip -C /usr/dotnetapps/bugsincluded/
+          
+        
