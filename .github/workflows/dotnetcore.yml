@@ -1,4 +1,4 @@
-name: .NET Core
+name: Build & Deploy
 on: [push]
 
 jobs:
@@ -14,14 +14,9 @@ jobs:
       run: dotnet build --configuration Release
     - name: Run Unit Tests
       run: dotnet test BugsIncluded.Tests/BugsIncluded.Tests.csproj /p:CollectCoverage=false
-    - name: Dotnet Publish Build Artifacts
+    - name: Publish Build Artifacts
       run:  dotnet publish -c Release -r linux-arm -o webapp --self-contained false
-    - name: Upload Build Artifacts
-      uses: actions/upload-artifact@v1
-      with:
-        name: buildartifact
-        path:  webapp
-    - name: Secure Copy of Build Artifacts
+    - name: Copy Artifact Files to Webserver using SCP
       uses: appleboy/scp-action@master
       env:
         HOST: ${{ secrets.SERVER_HOST }}
@@ -31,7 +26,7 @@ jobs:
       with:
         source: "/home/runner/work/BugsIncluded/BugsIncluded/webapp/"
         target: "/usr/dotnetapps/"
-    - name: SSH into server
+    - name: Deploy Artifacts on Webserver using SSH
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.SERVER_HOST }}
