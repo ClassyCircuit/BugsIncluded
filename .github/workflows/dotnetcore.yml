@@ -13,7 +13,7 @@ jobs:
     - name: Build with dotnet
       run: dotnet build --configuration Release
     - name: Run Unit Tests
-      run: dotnet test BugsIncluded.Tests/BugsIncluded.Tests.csproj /p:CollectCoverage=true
+      run: dotnet test BugsIncluded.Tests/BugsIncluded.Tests.csproj /p:CollectCoverage=false
     - name: Dotnet Publish Build Artifacts
       run:  dotnet publish -c Release -r linux-arm -o webapp --self-contained false
     - name: Upload Build Artifacts
@@ -40,8 +40,11 @@ jobs:
         port: ${{ secrets.SERVER_PORT }}
         script: |
           sudo systemctl stop bugsincluded.service
+          sudo rm -rf /usr/dotnetapps/bugsincluded_backup.tar.gz || true
           sudo tar -czvf /usr/dotnetapps/backup.tar.gz -C /usr/dotnetapps/bugsincluded/ .
-          sudo rm -r /usr/dotnetapps/bugsincluded/!(*.db*)
-          sudo tar -xf /usr/dotnetapps/webapp.zip -C /usr/dotnetapps/bugsincluded/
+          sudo rm -r /usr/dotnetapps/bugsincluded/!(*.db)
+          sudo systemctl restart bugsincluded.service
+          sudo chmod -R 777 /usr/dotnetapps
+          
           
         
