@@ -45,25 +45,6 @@ jobs:
           sudo rm -rf /usr/dotnetapps/temp
           sudo chmod -R 777 /usr/dotnetapps
           sudo systemctl restart bugsincluded.service
-  backup:
-    runs-on: [ubuntu-latest]
-    needs: [build]
-    steps:
-      - uses: actions/checkout@v2
-      - name: Backup database
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
-          port: ${{ secrets.SERVER_PORT }}
-          script: |
-            sudo git -C ~/repos/bugsincluded_backup/ pull --all
-            sudo sqlite3 /usr/dotnetapps/bugsincluded/BugsIncluded.db ".backup 'backup_bugsincluded.db'"
-            sudo mv /usr/dotnetapps/bugsincluded/backup_bugsincluded.db ~/repos/bugsincluded_backup/
-            sudo git -C ~/repos/bugsincluded_backup/ add .
-            sudo git -C ~/repos/bugsincluded_backup/ commit -m "automatic backup"
-            sudo git -C ~/repos/bugsincluded_backup/ push --all
 
 
           
