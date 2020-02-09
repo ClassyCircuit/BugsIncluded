@@ -45,8 +45,3 @@ jobs:
           sudo rm -rf /usr/dotnetapps/temp
           sudo chmod -R 777 /usr/dotnetapps
           sudo systemctl restart bugsincluded.service
-
-
-          
-          
-        
