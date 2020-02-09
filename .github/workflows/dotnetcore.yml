@@ -29,7 +29,7 @@ jobs:
         PORT: ${{ secrets.SERVER_PORT }}
         KEY: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
       with:
-        source: "buildartifact/webapp"
+        source: "${{ GITHUB_WORKSPACE }}/webapp/buildartifact.zip"
         target: "/usr/dotnetapps/"
     - name: SSH into server
       uses: appleboy/ssh-action@master
