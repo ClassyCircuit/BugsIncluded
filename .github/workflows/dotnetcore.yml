@@ -39,12 +39,14 @@ jobs:
         key: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
         port: ${{ secrets.SERVER_PORT }}
         script: |
-          sudo systemctl stop bugsincluded.service
           sudo rm -rf /usr/dotnetapps/bugsincluded_backup.tar.gz || true
+          sudo systemctl stop bugsincluded.service
           sudo tar -czvf /usr/dotnetapps/backup.tar.gz -C /usr/dotnetapps/bugsincluded/ .
-          sudo rm -r /usr/dotnetapps/bugsincluded/!(*.db)
-          sudo systemctl restart bugsincluded.service
+          sudo rm -r /usr/dotnetapps/bugsincluded/!(*.db*)
+          sudo mv -v /usr/dotnetapps/github/workspace/webapp/* /usr/dotnetapps/bugsincluded/
+          sudo rm -rf /usr/dotnetapps/github
           sudo chmod -R 777 /usr/dotnetapps
+          sudo systemctl restart bugsincluded.service
           
           
         
