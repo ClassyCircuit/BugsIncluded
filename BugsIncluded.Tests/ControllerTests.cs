@@ -21,7 +21,7 @@ namespace BugsIncluded.Tests
         public async void IndexReturnsCardViewModel()
         {
             // act
-            var result = homeController.Index();
+            var result = await homeController.Index();
 
             // assert
             var viewModel = Assert.IsType<ViewResult>(result);
