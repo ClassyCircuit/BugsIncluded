@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using BugsIncluded.ViewModels;
 using Moq;
 using Microsoft.Extensions.Logging;
+using BugsIncluded.Data.Repositories;
 
 namespace BugsIncluded.Tests
 {
@@ -14,19 +15,27 @@ namespace BugsIncluded.Tests
         public ControllerTests()
         {
             // arrange
-            var mock = new Mock<ILogger<HomeController>>();
-            homeController = new HomeController(mock.Object);
+            var loggerMock = new Mock<ILogger<HomeController>>();
+            var postRepoMock = new Mock<PostRepository>();
+
+            homeController = new HomeController(loggerMock.Object, postRepoMock.Object);
         }
         [Fact]
-        public async void IndexReturnsCardViewModel()
+        public async void IndexReturnsCardHolderViewModel()
         {
             // act
             var result = await homeController.Index();
 
             // assert
             var viewModel = Assert.IsType<ViewResult>(result);
-            var model = Assert.IsType<CardHolderViewModel>(viewModel.Model);
-            
+            Assert.IsType<CardHolderViewModel>(viewModel.Model);
+        }
+
+        [Fact]
+        public async void IndexCardViewModelsAreNotEmpty()
+        {
+            // act
+
         }
     }
 }

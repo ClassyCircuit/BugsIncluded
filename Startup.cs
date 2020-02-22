@@ -85,9 +85,16 @@ namespace BugsIncluded
             });
 
             using(var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
-            using(var context = scope.ServiceProvider.GetService<AppIdentityDbContext>())
             {
-                context.Database.Migrate();
+                using(var context = scope.ServiceProvider.GetService<AppIdentityDbContext>())
+                {
+                    context.Database.Migrate();
+                }
+
+                using(var context = scope.ServiceProvider.GetService<AppDbContext>())
+                {
+                    context.Database.Migrate();
+                }
             }
         }
     }
