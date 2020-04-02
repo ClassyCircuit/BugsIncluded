@@ -18,13 +18,13 @@ namespace BugsIncluded.Tests
             var loggerMock = new Mock<ILogger<HomeController>>();
             var postRepoMock = new Mock<PostRepository>();
 
-            homeController = new HomeController(loggerMock.Object, postRepoMock.Object);
+            //homeController = new HomeController(loggerMock.Object, postRepoMock.Object);
         }
         [Fact]
         public async void IndexReturnsCardHolderViewModel()
         {
             // act
-            var result = await homeController.Index();
+            var result = await homeController.Blog();
 
             // assert
             var viewModel = Assert.IsType<ViewResult>(result);

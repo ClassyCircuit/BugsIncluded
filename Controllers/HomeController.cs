@@ -19,7 +19,12 @@ namespace BugsIncluded.Controllers
             _logger = logger;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Assets()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> Blog()
         {
             CardHolderViewModel cardHolderViewModel = new CardHolderViewModel()
             {
