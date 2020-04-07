@@ -1,6 +1,6 @@
 using System;
 
-namespace BugsIncluded.Models
+namespace BugsIncluded.ViewModels
 {
     public class ErrorViewModel
     {
