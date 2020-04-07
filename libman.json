@@ -4,27 +4,27 @@
   "libraries": [
     {
       "library": "jquery@3.4.1",
+      "destination": "wwwroot/lib/jquery/",
       "files": [
         "jquery.js",
         "jquery.min.js",
         "jquery.min.map"
-      ],
-      "destination": "wwwroot/lib/jquery/"
+      ]
     },
     {
       "library": "jquery-validate@1.19.1",
+      "destination": "wwwroot/lib/jquery-validation/",
       "files": [
         "jquery.validate.min.js",
         "additional-methods.js"
-      ],
-      "destination": "wwwroot/lib/jquery-validation/"
+      ]
     },
     {
       "library": "jquery-validation-unobtrusive@3.2.11",
+      "destination": "wwwroot/lib/jquery-validation-unobtrusive/",
       "files": [
         "jquery.validate.unobtrusive.min.js"
-      ],
-      "destination": "wwwroot/lib/jquery-validation-unobtrusive/"
+      ]
     },
     {
       "provider": "unpkg",
@@ -51,6 +51,16 @@
         "dist/js/bootstrap.js.map",
         "dist/js/bootstrap.min.js",
         "dist/js/bootstrap.min.js.map"
+      ]
+    },
+    {
+      "provider": "unpkg",
+      "library": "@popperjs/core@2.2.1",
+      "destination": "wwwroot/lib/@popperjs/core/",
+      "files": [
+        "dist/umd/popper.min.js",
+        "dist/umd/popper.min.js.flow",
+        "dist/umd/popper.min.js.map"
       ]
     }
   ]
