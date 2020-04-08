@@ -7,21 +7,26 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using BugsIncluded.Models;
 using BugsIncluded.ViewModels;
+using BugsIncluded.Services;
 
 namespace BugsIncluded.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IAssetService assetService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IAssetService assetService)
         {
             _logger = logger;
+            this.assetService = assetService;
         }
 
-        public async Task<IActionResult> Assets()
+        public async Task<IActionResult> AssetPreview()
         {
-            return View();
+            var assetModels = assetService.GetAllAssetsAsync();
+            var viewModel = Mapper.AssetToAssetPreview(assetModels.Result);
+            return View(viewModel);
         }
 
         public async Task<IActionResult> Blog()

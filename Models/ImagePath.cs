@@ -5,18 +5,9 @@ using System.Threading.Tasks;
 
 namespace BugsIncluded.Models
 {
-    public enum ImageType
+    public class ImagePath : BaseEntity
     {
-        preview,
-        main,
-        secondary
-    }
-    public class ImagePath
-    {
-        public int Id { get; set; }
         public string Path { get; set; }
         public ImageType ImageType { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
     }
 }

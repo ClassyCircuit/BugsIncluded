@@ -5,11 +5,22 @@
     <UserSecretsId>aspnet-BugsIncluded-8B40CB89-C88A-403F-A0E8-88A457E7BFB8</UserSecretsId>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;CA2007</NoWarn>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Remove="BugsIncluded.Tests\**" />
     <Content Remove="BugsIncluded.Tests\**" />
     <EmbeddedResource Remove="BugsIncluded.Tests\**" />
     <None Remove="BugsIncluded.Tests\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200408172312_assets.cs" />
+    <Compile Remove="Migrations\20200408172312_assets.Designer.cs" />
+    <Compile Remove="Migrations\20200408173216_assets2.cs" />
+    <Compile Remove="Migrations\20200408173216_assets2.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

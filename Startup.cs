@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
+using BugsIncluded.Services;
 
 namespace BugsIncluded
 {
@@ -41,6 +42,8 @@ namespace BugsIncluded
             
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            services.AddScoped<IAssetService, AssetService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -80,7 +83,7 @@ namespace BugsIncluded
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Assets}/{id?}");
+                    pattern: "{controller=Home}/{action=AssetPreview}/{id?}");
                 endpoints.MapRazorPages();
             });
 
@@ -88,11 +91,13 @@ namespace BugsIncluded
             {
                 using(var context = scope.ServiceProvider.GetService<AppIdentityDbContext>())
                 {
+                    context.Database.EnsureCreated();
                     context.Database.Migrate();
                 }
 
                 using(var context = scope.ServiceProvider.GetService<AppDbContext>())
                 {
+                    context.Database.EnsureCreated();
                     context.Database.Migrate();
                 }
             }

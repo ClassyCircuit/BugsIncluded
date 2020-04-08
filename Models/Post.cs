@@ -5,13 +5,9 @@ using System.Threading.Tasks;
 
 namespace BugsIncluded.Models
 {
-    public class Post
+    public class Post : BaseEntity
     {
-        public int Id { get; set; }
         public string Title { get; set; }
         public string Contents { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
-
     }
 }

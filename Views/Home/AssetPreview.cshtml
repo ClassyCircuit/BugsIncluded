@@ -1,0 +1,21 @@
+﻿@model List<AssetPreviewViewModel>
+@{
+    ViewData["Title"] = "Featured Sprites";
+}
+<h1>@ViewData["Title"]</h1>
+<div class="container">
+    <div class="row row-cols-3">
+        @{
+            foreach(var item in Model)
+            {
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">@item.Title</h3>
+                    </div>
+                    <img src="@item.Images.First().Path" class="card-img-bottom" alt="Enchanted Forest Preview" />
+                </div>
+            }
+        }
+    </div>
+</div>
+
