@@ -12,7 +12,7 @@
                     <div class="card-body">
                         <h3 class="card-title">@item.Title</h3>
                     </div>
-                    <img src="@item.Images.First().Path" class="card-img-bottom" alt="Enchanted Forest Preview" />
+                    <img src="@Url.Content(item.Images.First().Path)" class="card-img-bottom" alt="Enchanted Forest Preview" />
                 </div>
             }
         }

@@ -18,6 +18,19 @@ namespace BugsIncluded.Data
         public DbSet<Asset> Assets { get; set; }
         public DbSet<ImagePath> ImagePaths { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // convert ImageType to string when writing to DB, and when reading from DB convert it back to enum
+            modelBuilder
+                .Entity<ImagePath>()
+                .Property(x => x.ImageType)
+                .HasConversion(
+                v => v.ToString(),
+                v => (ImageType)Enum.Parse(typeof(ImageType), v));
+        }
+
         public override int SaveChanges()
         {
             var entries = ChangeTracker
