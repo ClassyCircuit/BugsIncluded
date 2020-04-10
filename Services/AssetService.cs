@@ -28,5 +28,15 @@ namespace BugsIncluded.Services
             return await _context.SaveChangesAsync();
         }
 
+        public async Task<int> AddImagePathAsync(ImagePath imagePath)
+        {
+            _context.Add(imagePath);
+            return await _context.SaveChangesAsync();
+        }
+
+        public async Task<List<ImagePath>> GetAllImagePathsAsync()
+        {
+            return await _context.ImagePaths.ToListAsync();
+        }
     }
 }

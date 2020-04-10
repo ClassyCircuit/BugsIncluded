@@ -37,13 +37,8 @@ namespace BugsIncluded.Controllers
                 {
                     new CardViewModel()
                     {
-                        Title = "Configuring Raspberry Pi DNS Server",
+                        Title = "Blog posts coming soon",
                         LastUpdated = DateTime.Today
-                    },
-                    new CardViewModel()
-                    {
-                        Title = "Running Teradata Express on Azure",
-                        LastUpdated = DateTime.Today.AddDays(-5)
                     }
                 }
             };

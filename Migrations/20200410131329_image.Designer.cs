@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BugsIncluded.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200409164511_enums")]
-    partial class enums
+    [Migration("20200410131329_image")]
+    partial class image
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -58,6 +58,9 @@ namespace BugsIncluded.Migrations
 
                     b.Property<string>("ImageType")
                         .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Path")

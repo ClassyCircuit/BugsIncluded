@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BugsIncluded.Migrations
 {
-    public partial class assets : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -49,7 +49,7 @@ namespace BugsIncluded.Migrations
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     UpdatedAt = table.Column<DateTime>(nullable: false),
                     Path = table.Column<string>(nullable: true),
-                    ImageType = table.Column<int>(nullable: false),
+                    ImageType = table.Column<string>(nullable: false),
                     AssetId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>

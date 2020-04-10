@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BugsIncluded.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200408175856_assets")]
-    partial class assets
+    [Migration("20200410133357_imagepath")]
+    partial class imagepath
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -56,8 +56,12 @@ namespace BugsIncluded.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("ImageType")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("ImageType")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Path")
                         .HasColumnType("TEXT");
@@ -68,6 +72,9 @@ namespace BugsIncluded.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AssetId");
+
+                    b.HasIndex("Path")
+                        .IsUnique();
 
                     b.ToTable("ImagePaths");
                 });

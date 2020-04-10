@@ -3,15 +3,6 @@
   "defaultProvider": "cdnjs",
   "libraries": [
     {
-      "library": "jquery@3.4.1",
-      "destination": "wwwroot/lib/jquery/",
-      "files": [
-        "jquery.js",
-        "jquery.min.js",
-        "jquery.min.map"
-      ]
-    },
-    {
       "library": "jquery-validate@1.19.1",
       "destination": "wwwroot/lib/jquery-validation/",
       "files": [
@@ -42,6 +33,13 @@
       "destination": "wwwroot/lib/@popperjs/core/",
       "files": [
         "dist/umd/popper.min.js"
+      ]
+    },
+    {
+      "library": "jquery@3.4.1",
+      "destination": "wwwroot/lib/jquery/",
+      "files": [
+        "jquery.min.js"
       ]
     }
   ]

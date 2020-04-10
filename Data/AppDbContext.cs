@@ -29,6 +29,9 @@ namespace BugsIncluded.Data
                 .HasConversion(
                 v => v.ToString(),
                 v => (ImageType)Enum.Parse(typeof(ImageType), v));
+
+            // Set ImagePath.Path as unique index
+            modelBuilder.Entity<ImagePath>().HasIndex(x=>x.Path).IsUnique();
         }
 
         public override int SaveChanges()

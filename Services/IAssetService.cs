@@ -8,5 +8,7 @@ namespace BugsIncluded.Services
     {
         Task<int> AddAssetAsync(Asset asset);
         Task<List<Asset>> GetAllAssetsAsync();
+        Task<int> AddImagePathAsync(ImagePath imagePath);
+        Task<List<ImagePath>> GetAllImagePathsAsync();
     }
 }

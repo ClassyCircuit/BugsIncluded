@@ -3,14 +3,16 @@ using System;
 using BugsIncluded.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BugsIncluded.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200410120709_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,9 +60,6 @@ namespace BugsIncluded.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Path")
                         .HasColumnType("TEXT");
 
@@ -70,9 +69,6 @@ namespace BugsIncluded.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AssetId");
-
-                    b.HasIndex("Path")
-                        .IsUnique();
 
                     b.ToTable("ImagePaths");
                 });
