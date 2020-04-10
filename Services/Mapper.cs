@@ -21,7 +21,8 @@ namespace BugsIncluded.Services
                 {
                     Id = asset.Id,
                     Title = asset.Title,
-                    Images = asset.Images
+                    Images = asset.Images,
+                    Price = asset.Price
                 });
             }
 

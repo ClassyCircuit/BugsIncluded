@@ -1,18 +1,27 @@
 ﻿@model List<AssetPreviewViewModel>
 @{
-    ViewData["Title"] = "Featured Sprites";
+    ViewData["Title"] = "2D ASSETS";
 }
-<h1>@ViewData["Title"]</h1>
-<div class="container">
-    <div class="row row-cols-3">
+<h1 class="text-left">@ViewData["Title"]</h1>
+<div class="container p-0">
+    <div class="row my-5">
         @{
-            foreach(var item in Model)
+            foreach (var item in Model)
             {
-                <div class="card">
-                    <div class="card-body">
-                        <h3 class="card-title">@item.Title</h3>
+                <div class="col-md-4 col-sm-6 col-12 my-3">
+                    <div class="card h-100 shadow rounded">
+                        <div class="card-body pb-0 pt-5">
+                            <div class="row">
+                                <div class="col-8">
+                                    <h3 class="card-title">@item.Title</h3>
+                                </div>
+                                <div class="col-4">
+                                    <h5 class="card-text">@item.Price EUR</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <img src="@Url.Content(item.Images.First().Path)" class="card-img-bottom" alt="Enchanted Forest Preview" />
                     </div>
-                    <img src="@Url.Content(item.Images.First().Path)" class="card-img-bottom" alt="Enchanted Forest Preview" />
                 </div>
             }
         }

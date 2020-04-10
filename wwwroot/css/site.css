@@ -59,8 +59,9 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    
 }
 .footer {
   position: absolute;
@@ -68,4 +69,18 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+}
+
+h1 {
+    /*text-align: center*/
+}
+
+* {
+    font-family: 'Oswald', sans-serif;
+}
+
+.card-img-bottom {
+    width: 100% !important;
+    height: 300px !important;
+    object-fit: cover;
 }

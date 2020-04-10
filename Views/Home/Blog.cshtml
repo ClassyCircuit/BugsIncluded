@@ -4,16 +4,15 @@
     ViewData["Title"] = "*";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to Bugs Included!</h1>
-    <p>The Technical Blog</p>
+<div class="text-left">
+    <h1>BLOG</h1>
 </div>
 
 <div class="card-deck">
     @foreach (var card in Model.CardViewModels)
     {
         <div class="card text-white bg-info" style="max-width: 18rem;">
-            <div class="card-header">@card.LastUpdated.Date.ToLongDateString().Replace(@card.LastUpdated.DayOfWeek.ToString()+", ","")</div>
+            <div class="card-header">@card.LastUpdated.Date.ToLongDateString()</div>
             <div class="card-body text-center">
                 <h5>@card.Title</h5>
                 <p class="card-text">Summary of the card goes here</p>

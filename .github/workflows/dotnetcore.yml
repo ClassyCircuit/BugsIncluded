@@ -12,8 +12,9 @@ jobs:
         dotnet-version: 3.1.101
     - name: Build with dotnet
       run: dotnet build --configuration Release
-    - name: Run Unit Tests
-      run: dotnet test BugsIncluded.Tests/BugsIncluded.Tests.csproj /p:CollectCoverage=false
+    # Unit tests temporarily disabled
+    #- name: Run Unit Tests
+    #  run: dotnet test BugsIncluded.Tests/BugsIncluded.Tests.csproj /p:CollectCoverage=false
     - name: Publish Build Artifacts
       run:  dotnet publish -c Release -r linux-arm -o webapp --self-contained false
     - name: Copy Artifact Files to Webserver using SCP
