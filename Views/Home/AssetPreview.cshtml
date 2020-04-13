@@ -20,7 +20,7 @@
                                 </div>
                             </div>
                         </div>
-                        <img src="@Url.Content(item.Images.First().Path)" class="card-img-bottom" alt="Enchanted Forest Preview" />
+                        <img src='@Url.Content(@$"/Content{item.Images.First().Path}")' class="card-img-bottom" alt="@item.Images.First().Name" />
                     </div>
                 </div>
             }

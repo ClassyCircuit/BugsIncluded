@@ -14,6 +14,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
 using BugsIncluded.Services;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace BugsIncluded
 {
@@ -39,7 +41,7 @@ namespace BugsIncluded
             // app data access
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-            
+
             services.AddControllersWithViews();
             services.AddRazorPages();
 
@@ -49,7 +51,7 @@ namespace BugsIncluded
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if(app == null)
+            if (app == null)
             {
                 throw new ArgumentNullException(nameof(app));
             }
@@ -58,12 +60,26 @@ namespace BugsIncluded
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
+                app.UseStaticFiles(new StaticFileOptions
+                {
+                    // in development use the local dir for static files
+                    FileProvider = new PhysicalFileProvider(Path.GetFullPath(@"C:/StaticFiles/bugsincluded/www")),
+                    RequestPath = "/Content"
+                });
+
             }
             else
             {
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
+
+                app.UseStaticFiles(new StaticFileOptions
+                {
+                    // in prod use the server dir for static files
+                    FileProvider = new PhysicalFileProvider(Path.GetFullPath(@"/srv/bugsincluded/www")),
+                    RequestPath = "/Content"
+                });
             }
 
             app.UseForwardedHeaders(new ForwardedHeadersOptions
@@ -73,6 +89,8 @@ namespace BugsIncluded
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+
 
             app.UseRouting();
 
@@ -87,15 +105,15 @@ namespace BugsIncluded
                 endpoints.MapRazorPages();
             });
 
-            using(var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            using (var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
-                using(var context = scope.ServiceProvider.GetService<AppIdentityDbContext>())
+                using (var context = scope.ServiceProvider.GetService<AppIdentityDbContext>())
                 {
                     context.Database.EnsureCreated();
                     context.Database.Migrate();
                 }
 
-                using(var context = scope.ServiceProvider.GetService<AppDbContext>())
+                using (var context = scope.ServiceProvider.GetService<AppDbContext>())
                 {
                     context.Database.EnsureCreated();
                     context.Database.Migrate();
