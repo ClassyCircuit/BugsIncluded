@@ -12,7 +12,7 @@
 *.userosscache
 *.sln.docstates
 *.db
-wwwroot/images/*
+wwwroot/images/
 
 
 # User-specific files (MonoDevelop/Xamarin Studio)
