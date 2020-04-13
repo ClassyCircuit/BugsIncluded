@@ -8,19 +8,19 @@
         @{
             foreach (var item in Model)
             {
-                <div class="col-md-4 col-sm-6 col-12 my-3">
-                    <div class="card h-100 shadow rounded">
-                        <div class="card-body pb-0 pt-5">
-                            <div class="row">
-                                <div class="col-8">
-                                    <h3 class="card-title">@item.Title</h3>
+                <div class="col-md-4 col-sm-6 col-12 my-3"> <!-- responsive columns with margins -->
+                    <div class="card h-100 shadow rounded"> <!-- cards inside those columns with max height -->
+                        <div class="card-body pb-0 pt-5"> <!-- body on upper side of card for text -->
+                            <div class="row align-items-end"> <!-- row on bottom side of card divided into 2 columns -->
+                                <div class="col-8 "> <!-- column 1 for title -->
+                                    <h3 class="card-text">@item.Title</h3>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-4"> <!-- column 2 for price -->
                                     <h5 class="card-text">@item.Price EUR</h5>
                                 </div>
                             </div>
-                        </div>
-                        <img src='@Url.Content(@$"/Content{item.Images.First().Path}")' class="card-img-bottom" alt="@item.Images.First().Name" />
+                        </div> <!-- image on the bottom of card -->
+                        <img src='@Url.Content(@$"/Content{item.Images.First().Path}")' class="card-img-bottom mt-2" alt="@item.Images.First().Name" />
                     </div>
                 </div>
             }
