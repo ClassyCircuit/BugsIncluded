@@ -61,7 +61,7 @@ html {
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
-    
+    background-image: url('../images/pixel-heart.png');
 }
 .footer {
   position: absolute;
@@ -83,4 +83,8 @@ h1 {
     width: 100% !important;
     height: 300px !important;
     object-fit: cover;
+}
+
+main{
+    background-color:white;
 }
