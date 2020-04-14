@@ -11,16 +11,16 @@
                 <div class="col-md-4 col-sm-6 col-12 my-3">
                     <div class="card h-100 shadow rounded">
                         <div class="card-body pb-0 pt-5">
-                            <div class="row">
-                                <div class="col-8">
+                            <div class="row align-items-end">
+                                <div class="col-8 pl-1">
                                     <h3 class="card-title">@item.Title</h3>
                                 </div>
-                                <div class="col-4">
-                                    <h5 class="card-text">@item.Price EUR</h5>
+                                <div class="col-4 pr-1">
+                                    <h5 class="card-title text-right">@item.Price EUR</h5>
                                 </div>
                             </div>
                         </div>
-                        <img src='@Url.Content(@$"/Content{item.Images.First().Path}")' class="card-img-bottom" alt="@item.Images.First().Name" />
+                        <img src='@Url.Content($@"/Content{item.Images.First().Path}")' class="card-img-bottom" alt="@item.Images.First().Name" />
                     </div>
                 </div>
             }

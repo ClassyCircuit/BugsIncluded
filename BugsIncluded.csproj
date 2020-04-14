@@ -17,13 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20200408172312_assets.cs" />
-    <Compile Remove="Migrations\20200408172312_assets.Designer.cs" />
-    <Compile Remove="Migrations\20200408173216_assets2.cs" />
-    <Compile Remove="Migrations\20200408173216_assets2.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Remove="wwwroot\images\a.png" />
     <Content Remove="wwwroot\images\Artboard 57.png" />
     <Content Remove="wwwroot\images\Artboard 68.png" />

@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BugsIncluded.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200410133357_imagepath")]
-    partial class imagepath
+    [Migration("20200414152823_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
