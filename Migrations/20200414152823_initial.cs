@@ -48,6 +48,7 @@ namespace BugsIncluded.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     UpdatedAt = table.Column<DateTime>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
                     Path = table.Column<string>(nullable: true),
                     ImageType = table.Column<string>(nullable: false),
                     AssetId = table.Column<int>(nullable: true)
@@ -67,6 +68,12 @@ namespace BugsIncluded.Migrations
                 name: "IX_ImagePaths_AssetId",
                 table: "ImagePaths",
                 column: "AssetId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ImagePaths_Path",
+                table: "ImagePaths",
+                column: "Path",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
