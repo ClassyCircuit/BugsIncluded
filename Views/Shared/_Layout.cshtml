@@ -4,14 +4,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bugs Included</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" >
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="~/lib/twitter-bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <!-- #TODO: Add environments here, so prod would load scripts from CDN not the webserver-->
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-0 box-shadow shadow py-4">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="AssetPreview">BUGS INCLUDED</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -34,6 +37,7 @@
                 </div>
             </div>
         </nav>
+
     </header>
     <div class="container pt-5">
         <main role="main" class="mb-5">
@@ -43,9 +47,9 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted bg-white">
+    <footer class="footer text-muted">
         <div class="container">
-            &copy;@DateTime.Now.Year - BugsIncluded
+            &copy;@DateTime.Now.Year - BugsIncluded - EPASTU ŠEIT PIELIEC
         </div>
     </footer>
     <script src="~/lib/jquery/jquery.min.js"></script>

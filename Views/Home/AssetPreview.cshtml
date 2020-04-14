@@ -7,19 +7,27 @@
         @{
             foreach (var item in Model)
             {
-                <div class="col-md-4 col-sm-6 col-12 my-3"> <!-- responsive columns with margins -->
-                    <div class="card h-100 shadow-lg rounded"> <!-- cards inside those columns with max height -->
-                        <div class="card-body pb-0 pt-5"> <!-- body on upper side of card for text -->
-                            <div class="row align-items-end"> <!-- row on bottom side of card divided into 2 columns -->
-                                <div class="col-8 pl-1"> <!-- column 1 for title -->
-                                    <h3 class="card-text">@item.Title</h3>
+                <div class="col-md-4 col-sm-6 col-12 my-3 card_column">
+                    <!-- responsive columns with margins -->
+                    <div class="card h-100 shadow-lg rounded-0 border-0">
+                        <!-- cards inside those columns with max height -->
+                        <div class="card-body pb-0 pt-4 rounded-0">
+                            <!-- body on upper side of card for text -->
+                            <div class="row align-items-end pt-1">
+                                <!-- row on bottom side of card divided into 2 columns -->
+                                <div class="col-8 pl-1">
+                                    <!-- column 1 for title -->
+                                    <h3 class="card-title">@item.Title</h3>
                                 </div>
                                 <div class="col-4 pr-1">
                                     <h5 class="card-title text-right">@item.Price EUR</h5>
                                 </div>
                             </div>
                         </div> <!-- image on the bottom of card -->
-                        <img src='@Url.Content($@"/Content{item.Images.First().Path}")' class="card-img-bottom mt-2" alt="@item.Images.First().Name" />
+                        <img src='@Url.Content($@"/Content{item.Images.First().Path}")' class="card-img-bottom mt-1 card-custom-img rounded-0" alt="@item.Images.First().Name" />
+                        <div class="card_overlay">
+                            <p class="card_overlay_text">DETAILS</p>
+                        </div>
                     </div>
                 </div>
             }
