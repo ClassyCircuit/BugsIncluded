@@ -11,7 +11,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-5">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="AssetPreview">BUGS INCLUDED</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -35,13 +35,15 @@
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div class="container pt-5">
+        <main role="main" class="mb-5">
+            <h1 class="text-left display-2 mb-5 text-white">@ViewData["Title"]</h1>
+
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted bg-white">
         <div class="container">
             &copy;@DateTime.Now.Year - BugsIncluded
         </div>
