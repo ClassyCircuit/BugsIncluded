@@ -13,8 +13,9 @@ a.navbar-brand {
 }
 
 /* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
+card_column > a:hover, a:visited, a:link, a:active {
+    color: #67554d;
+    text-decoration: none;
 }
 
 .btn-primary {
@@ -78,8 +79,6 @@ h1 {
     font-family: 'Oswald', sans-serif;
 }
 
-
-
 * {
     font-family: 'Titillium Web', sans-serif;
 }
@@ -110,30 +109,34 @@ main{
     
 }
 
-.card-custom-img{
-    pointer-events:none;
+
+.image_wrapper{
+    position:relative;
+}
+
+.card-custom-img {
+    /* pointer-events: none; */
+   
 }
 
 .card_overlay {
     position: absolute;
     top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
     height: 100%;
     width: 100%;
+    z-index: 10;
     opacity: 0;
     transition: .5s ease;
-    background-color: #F4F0D4;
+    background-color: #FEE1BE;
 }
 
 .card_column:hover .card_overlay{
     opacity:0.8;
 }
 
-.card_overlay_text {
-    color: white;
-    font-size: 40px;
+.card_overlay_button {
+    color: #67554d;
+    font-size: 24pt;
     position: relative;
     top: 50%;
     left: 50%;
