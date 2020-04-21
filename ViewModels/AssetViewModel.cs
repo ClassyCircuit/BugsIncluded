@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace BugsIncluded.ViewModels
 {
-    public class AssetPreviewViewModel
+    public class AssetViewModel
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public List<ImagePath> Images { get; set; }
         public decimal Price { get; set; }
-
+        public string Description { get; set; }
+        public List<ImagePath> Images { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model List<AssetPreviewViewModel>
+﻿@model List<AssetViewModel>
 @{
     ViewData["Title"] = "2D ASSETS";
 }
@@ -9,7 +9,7 @@
             {
                 <!-- responsive columns with margins -->
                 <div class="col-md-4 col-sm-6 col-12 my-3 card_column">
-                    <a asp-area="" asp-controller="Home" asp-action="Blog">
+                    <a asp-area="" asp-controller="Home" asp-action="Asset" asp-route-id="@item.Id">
                         <!-- cards inside those columns with max height -->
                         <div class="card h-100 shadow-lg rounded-0 border-0">
                             <!-- body on upper side of card for text -->
@@ -28,7 +28,7 @@
                             <!-- image on the bottom of card -->
                             <div class="image_wrapper">
                                 <div>
-                                    <img src='@Url.Content($@"/Content{item.Images.First().Path}")' class="card-img-bottom card-custom-img rounded-0" alt="@item.Images.First().Name" />
+                                    <img src='@Url.Content($@"/Content{item.Images.Single(x=>x.ImageType == ImageType.Preview).Path}")' class="card-img-bottom card-custom-img rounded-0" alt="@item.Images.First().Name" />
                                 </div>
                                 <div class="card_overlay">
                                     <p class='card_overlay_button'>DETAILS</p>

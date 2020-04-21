@@ -10,5 +10,6 @@ namespace BugsIncluded.Services
         Task<List<Asset>> GetAllAssetsAsync();
         Task<int> AddImagePathAsync(ImagePath imagePath);
         Task<List<ImagePath>> GetAllImagePathsAsync();
+        Task<Asset> GetAssetAsync(int id);
     }
 }

@@ -1,0 +1,26 @@
+﻿@model AssetViewModel
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="container p-0">
+    <div class="row mb-5 alpha60 asset_row">
+        @{
+            <!-- Main asset image/gif -->
+            <div class="col-md-12 col-sm-12 col-12 my-3 main_img_div">
+                <img src='@Url.Content($@"/Content{Model.Images.FirstOrDefault(x=>x.ImageType == ImageType.Main)?.Path}")' class="img-fluid img_main" alt="Main Asset Preview" />
+            </div>
+
+            <div class="col-md-4 col-sm-4 my-3">
+                <img src='@Url.Content($@"/Content{Model.Images.FirstOrDefault(x=>x.ImageType == ImageType.Side)?.Path}")' class="img-fluid" alt="Main Asset Preview" />
+
+            </div>
+        }
+    </div>
+</div>
+
+<div>
+    <a asp-action="AssetPreview">Back to List</a>
+</div>
+

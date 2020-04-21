@@ -12,21 +12,27 @@ namespace BugsIncluded.Services
     /// </summary>
     public static class Mapper
     {
-        public static List<AssetPreviewViewModel> AssetToAssetPreview(List<Asset> assetModels)
+        public static List<AssetViewModel> ToAssetViewModelList(List<Asset> assetModels)
         {
-            var viewModel = new List<AssetPreviewViewModel>();
+            var viewModelList = new List<AssetViewModel>();
             foreach (var asset in assetModels)
             {
-                viewModel.Add(new AssetPreviewViewModel()
-                {
-                    Id = asset.Id,
-                    Title = asset.Title,
-                    Images = asset.Images,
-                    Price = asset.Price
-                });
+                viewModelList.Add(ToAssetViewModel(asset));
             }
 
-            return viewModel;
+            return viewModelList;
+        }
+
+        public static AssetViewModel ToAssetViewModel(Asset asset)
+        {
+            return new AssetViewModel()
+            {
+                Id = asset.Id,
+                Title = asset.Title,
+                Images = asset.Images,
+                Price = asset.Price,
+                Description = asset.Description
+            };
         }
     }
 }

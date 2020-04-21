@@ -25,8 +25,15 @@ namespace BugsIncluded.Controllers
         public async Task<IActionResult> AssetPreview()
         {
             var assetModels = assetService.GetAllAssetsAsync();
-            var viewModel = Mapper.AssetToAssetPreview(assetModels.Result);
+            var viewModel = Mapper.ToAssetViewModelList(assetModels.Result);
             return View(viewModel);
+        }
+
+        public async Task<IActionResult> Asset(int Id)
+        {
+            var assetModel = assetService.GetAssetAsync(Id);
+            AssetViewModel assetViewModel = Mapper.ToAssetViewModel(assetModel.Result);
+            return View(assetViewModel);
         }
 
         public async Task<IActionResult> Blog()

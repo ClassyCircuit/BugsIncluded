@@ -32,17 +32,17 @@ namespace BugsIncluded.Tests
         [Fact]
         public void CreateDummyImagePaths()
         {
-            var imageList = new List<ImagePath>()
-            {
-                new ImagePath()
-                {
-                    Name = "Jumping pad",
-                    ImageType = ImageType.NonAsset,
-                    Path = @"/images/Artboard 73.png"
-                }
-            };
+            //var imageList = new List<ImagePath>()
+            //{
+            //    new ImagePath()
+            //    {
+            //        Name = "Jumping pad",
+            //        ImageType = ImageType.NonAsset,
+            //        Path = @"/images/Artboard 73.png"
+            //    }
+            //};
 
-            _ = assetService.AddImagePathAsync(imageList[0]).Result;
+            //_ = assetService.AddImagePathAsync(imageList[0]).Result;
         }
 
         [Fact]
@@ -62,6 +62,51 @@ namespace BugsIncluded.Tests
                                 Name = "Enchanted Forest",
                                 ImageType = ImageType.Preview,
                                 Path = @"/images/bg1.png"
+                            },
+                            new ImagePath()
+                            {
+                                Name = "Enchanted Forest Main",
+                                ImageType = ImageType.Main,
+                                Path = @"/images/efmain.png"
+                            },
+                            new ImagePath()
+                            {
+                                Name = "Enchanted Forest Spritesheet",
+                                ImageType = ImageType.Side,
+                                Path = @"/images/enchanted_nv.png"
+                            },
+                            new ImagePath()
+                            {
+                                Name = "Enchanted Forest a65",
+                                ImageType = ImageType.Bottom,
+                                Path = @"/images/Artboard 65.png"
+                            },
+                            new ImagePath()
+                            {
+                                Name = "Enchanted Forest a73",
+                                ImageType = ImageType.Bottom,
+                                Path = @"/images/Artboard 73.png"
+                            },
+                            new ImagePath()
+                            {
+                                Name = "Enchanted Forest 60",
+                                ImageType = ImageType.Bottom,
+                                Path = @"/images/Artboard 60.png"
+                            }
+                        }
+                },
+                new Asset()
+                {
+                    Title = "Low Poly",
+                    Description = "Low poly land for 3d worlds",
+                    Price = 14.99m,
+                    Images = new List<ImagePath>()
+                        {
+                            new ImagePath()
+                            {
+                                Name = "Low Poly Land",
+                                ImageType = ImageType.Preview,
+                                Path = @"/images/bg3.png"
                             }
                         }
                 },
@@ -133,7 +178,8 @@ namespace BugsIncluded.Tests
                 {
                     _ = assetService.AddAssetAsync(item).Result;
 
-                }catch(Exception ex)
+                }
+                catch (Exception ex)
                 {
                     continue;
                 }

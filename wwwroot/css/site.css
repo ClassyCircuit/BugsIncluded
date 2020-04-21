@@ -149,3 +149,15 @@ main{
     transform: translate(-50%, -50%);
     text-align: center;
 }
+
+.img_main {
+    object-fit: cover;
+}
+
+.main_img_div{
+   
+}
+
+.alpha60 {
+    background-color: #fcd5d2;
+}

@@ -38,5 +38,10 @@ namespace BugsIncluded.Services
         {
             return await _context.ImagePaths.ToListAsync();
         }
+
+        public async Task<Asset> GetAssetAsync(int id)
+        {
+            return await _context.Assets.Include(x => x.Images).Where(z => z.Id == id).SingleOrDefaultAsync();
+        }
     }
 }

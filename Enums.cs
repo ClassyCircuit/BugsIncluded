@@ -8,8 +8,9 @@ namespace BugsIncluded
     public enum ImageType
     {
         Preview, // display on assets page as preview
-        Main, // multiple images on asset detail page
-        Secondary, // multiple images on bottom of detail page
+        Main, // main image on asset detail page
+        Side, // images on side of detail page
+        Bottom, // images on bottom of detail page
         NonAsset // image not associated with any asset (logos etc)
     }
 }
