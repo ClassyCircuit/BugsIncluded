@@ -4,23 +4,65 @@
     ViewData["Title"] = Model.Title;
 }
 
-<div class="container p-0">
-    <div class="row mb-5 alpha60 asset_row">
-        @{
-            <!-- Main asset image/gif -->
-            <div class="col-md-12 col-sm-12 col-12 my-3 main_img_div">
+<div class="container p-0 asset_container">
+    <!-- Main asset image/gif -->
+    <div class="row p-0">
+        <a href='@Url.Content($@"/Content{Model.Images.FirstOrDefault(x=>x.ImageType == ImageType.Main)?.Path}")' data-toggle="lightbox" data-gallery="Images" data-max-width="1440" data-width="1440">
+            <div class="col-12 mb-3">
                 <img src='@Url.Content($@"/Content{Model.Images.FirstOrDefault(x=>x.ImageType == ImageType.Main)?.Path}")' class="img-fluid img_main" alt="Main Asset Preview" />
             </div>
+        </a>
+    </div>
 
-            <div class="col-md-4 col-sm-4 my-3">
-                <img src='@Url.Content($@"/Content{Model.Images.FirstOrDefault(x=>x.ImageType == ImageType.Side)?.Path}")' class="img-fluid" alt="Main Asset Preview" />
+    <!-- Description -->
+    <div class="row my-3 mx-5">
+        <!--        <p>@Model.Description</p>
+        -->
+        <div class="col-12">
+            <p class="text-justify">Mysterious forest spritesheet. Created as infinitely scalable vector art in Illustrator and setup in Unity.</p>
+        </div>
+        <div class="col-12">
+            <p>Includes the following:</p>
+        </div>
 
-            </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">- 24 tileable blocks for quickly drawing levels using tilemaps. </li>
+            <li class="list-group-item">- Blocks can be used together with Unity Rule tiles for quick alignment and rotation</li>
+            <li class="list-group-item">- 35 environment objects such as trees, bushes, mushrooms, vines, rocks, flowers, lights and a boat</li>
+            <li class="list-group-item">- Parallax background which repeats horizontally and is already setup in Unity with all the required scripts</li>
+        </ul>
+    </div>
+
+    <!-- Other images/gifs -->
+    <div class="row mb-3 px-5">
+        @{
+            foreach (var item in Model.Images.Where(x => x.ImageType == ImageType.Bottom || x.ImageType == ImageType.Side))
+            {
+                <div class="col-md-4 col-sm-6 col-12 my-3 card_column">
+                    <a href='@Url.Content($@"/Content{item.Path}")' data-toggle="lightbox" data-gallery="Images" data-max-width="1440" data-width="1440">
+                        <div class="card h-100 shadow rounded-0 border-0 asset_img_card">
+                            <div class="image_wrapper">
+                                <div>
+                                    <img src='@Url.Content($@"/Content{item.Path}")' class="card-img-bottom card-custom-img rounded-0" alt="@item.Name" />
+                                </div>
+                                <div class="card_overlay">
+
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
         }
     </div>
-</div>
+    <div class="row justify-content-center pb-3">
+        <div class="d-flex">
+            <a asp-action="AssetPreview">Back to List</a>
+        </div>
 
+    </div>
+</div>
 <div>
-    <a asp-action="AssetPreview">Back to List</a>
+
 </div>
 

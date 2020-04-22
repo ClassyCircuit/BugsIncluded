@@ -53,7 +53,10 @@ namespace BugsIncluded.Tests
                 new Asset()
                 {
                     Title = "Enchanted Forest",
-                    Description = "Mystical forest pack",
+                    Description = @"Mysterious forest spritesheet. Created as infinitely scalable vector art in Illustrator and setup in Unity.
+        - Includes 24 tileable blocks for quickly drawing levels using tilemaps. Blocks can be setup to use Unity Rule tiles for correct alignment and rotation of the blocks. 
+        - 35 environment objects such as trees, bushes, mushrooms, vines, rocks, flowers, lights and a boat
+        - Parallax background which repeats horizontally and is already setup in Unity with all the required scripts",
                     Price = 14.99m,
                     Images = new List<ImagePath>()
                         {

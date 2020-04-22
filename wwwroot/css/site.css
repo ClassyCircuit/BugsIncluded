@@ -130,12 +130,12 @@ main{
     width: 100%;
     z-index: 10;
     opacity: 0;
-    transition: .5s ease;
+    transition: .2s ease;
     background-color: #FEE1BE;
 }
 
 .card_column:hover .card_overlay{
-    opacity:0.8;
+    opacity:0.7;
 }
 
 .card_overlay_button {
@@ -154,10 +154,15 @@ main{
     object-fit: cover;
 }
 
-.main_img_div{
-   
+
+.asset_container {
+    background-color: #fcd5d2;
 }
 
-.alpha60 {
+.list-group-item {
     background-color: #fcd5d2;
+}
+
+.asset_img_card{
+    object-fit:contain;
 }

@@ -41,6 +41,14 @@
       "files": [
         "jquery.min.js"
       ]
+    },
+    {
+      "library": "ekko-lightbox@5.3.0",
+      "destination": "wwwroot/lib/ekko-lightbox/",
+      "files": [
+        "ekko-lightbox.min.js",
+        "ekko-lightbox.css"
+      ]
     }
   ]
 }
